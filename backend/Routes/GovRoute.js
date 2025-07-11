@@ -1,9 +1,8 @@
-// backend/Routes/GovSignupRoute.js
+
 const express = require("express");
 const router = express.Router();
 const GovUser = require("../Models/GovUserModel");
 
-// POST /signup/govsignup
 router.post("/", async (req, res) => {
   try {
     const { name, govId, email, department, password } = req.body;

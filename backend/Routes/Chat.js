@@ -9,14 +9,14 @@ router.post("/chat", async (req, res) => {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "mistralai/mistral-7b-instruct", // you can change this
+        model: "mistralai/mistral-7b-instruct", 
         messages: [{ role: "user", content: message }],
       },
       {
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:3000", // or your live site
+          "HTTP-Referer": "http://localhost:3000", 
           "X-Title": "AyushStartupChatbot",
         },
       }
