@@ -20,7 +20,7 @@ router.get("/verify-token", async (req, res) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await User.findById(decoded.userId)); 
+    const user = await User.findById(decoded.userId); 
     if (!user) return res.json({ success: false });
 
     res.json({
