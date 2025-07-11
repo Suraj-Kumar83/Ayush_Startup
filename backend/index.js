@@ -23,14 +23,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000", 
-      "https://ayush-startup-frontend.vercel.app", 
+      "https://ayush-startup-frontend.vercel.app/", 
     ],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST","PUT", "DELETE"],
     credentials: true,
   })
 );
 
-// ✅ Handle preflight requests for all routes
 app.options("*", cors());
 
 app.use(express.json());
