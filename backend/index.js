@@ -17,36 +17,58 @@ const govLoginRoute = require("./Routes/govAuth.js");
 
 const MONGO_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 4000;
+
 const app = express();
 
+// ✅ Connect to MongoDB
+mongoose
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err.message);
+    process.exit(1); // exit if DB not connected
+  });
+
+// ✅ CORS setup for frontend access
 const corsOptions = {
   origin: [
     "http://localhost:3000",
-    "https://ayush-startup-frontend.vercel.app"
+    "https://ayush-startup-frontend.vercel.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight
 
-app.use(cors(corsOptions));           
-
-
+// ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// ✅ Session middleware (used with Passport)
 app.use(
   session({
-    secret: process.env.GOOGLE_CLIENT_SECRET ,
+    secret: process.env.SESSION_SECRET || "some_secret", // Prefer a dedicated secret
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      sameSite: "Lax",
+    },
   })
 );
 
+// ✅ Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
+// ✅ Routes
 app.use("/", authRoute);
 app.use("/register", registerRoute);
 app.use("/api", ChatRoute);
@@ -54,9 +76,9 @@ app.use("/api/proposal", proposalRoute);
 app.use("/signup/govsignup", govSignupRoute);
 app.use("/login/govlogin", govLoginRoute);
 
-
+// ✅ Server listener
 app.listen(PORT, () => {
-  console.log(`🚀 Server is listening on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
 
 
