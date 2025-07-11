@@ -76,33 +76,33 @@ This project addresses these challenges by providing a **secure, AI-assisted, an
 
 ### Backend
 
-cd backend
-npm install
-npm start
+- cd backend
+- npm install
+- npm start
 
 ### Frontend
-cd frontend
-npm install
-npm start
+- cd frontend
+- npm install
+- npm start
 
 
 ### Ensure .env files are configured with:
 ## For Backend
-MONGO_URL
-PORT
-GOOGLE_CLIENT_ID
-GOOGLE_CLIENT_SECRET
-OPENROUTER_API_KEY
-JWT_SECRET
-ADMIN_EMAIL
-ADMIN_PASS
-NOTIFY_EMAIL
+- MONGO_URL
+- PORT
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+- OPENROUTER_API_KEY
+- JWT_SECRET
+- ADMIN_EMAIL
+- ADMIN_PASS
+- NOTIFY_EMAIL
 
 ## Frontend
-REACT_APP_EMAILJS_SERVICE_ID
-REACT_APP_EMAILJS_TEMPLATE_ID
-REACT_APP_EMAILJS_PUBLIC_KEY
-REACT_APP_BACKEND_URL
+- REACT_APP_EMAILJS_SERVICE_ID
+-REACT_APP_EMAILJS_TEMPLATE_ID
+- REACT_APP_EMAILJS_PUBLIC_KEY
+- REACT_APP_BACKEND_URL
 
 ### Then , npm start at both backend and frontend directories.
 
