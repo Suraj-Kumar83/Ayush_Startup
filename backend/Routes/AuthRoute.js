@@ -47,10 +47,14 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "https://ayush-startup-frontend.vercel.app/", 
-    failureRedirect: "https://ayush-startup-frontend.vercel.app/login",
-  })
+    failureRedirect: "/login", 
+    session: false,
+  }),
+  (req, res) => {
+    res.redirect("https://ayush-startup-frontend.vercel.app/");
+  }
 );
+
 
 
 router.post("/google-signup", async (req, res) => {
