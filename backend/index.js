@@ -8,7 +8,7 @@ const registerRoute =require("./Routes/Register");
 const ChatRoute = require("./Routes/Chat");
 const path = require("path");
 require("dotenv").config();
-require("./config/passport"); // <- Load passport config
+require("./config/passport"); 
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
 const proposalRoute = require("./Routes/Proposal.js");
@@ -28,11 +28,13 @@ mongoose
 
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://ayush-startup-frontend.vercel.app/"],
-    methods: ["GET", "POST"],
+    origin: [ "http://localhost:3000","https://ayush-startup-frontend.vercel.app/"],
+    methods: ["GET", "POST","PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
+
+app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
