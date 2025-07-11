@@ -25,7 +25,7 @@ app.use(
       "http://localhost:3000", 
       "https://ayush-startup-frontend.vercel.app", 
     ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
