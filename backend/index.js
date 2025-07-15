@@ -38,10 +38,11 @@ const corsOptions = {
     "http://localhost:3000",
     "https://ayush-startup-frontend.vercel.app",
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE","OPTIONS"],
   credentials: true,
 };
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // ✅ Middleware
 app.use(express.json());
