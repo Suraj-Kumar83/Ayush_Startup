@@ -51,7 +51,7 @@ router.get(
     session: false,
   }),
   (req, res) => {
-    res.redirect("https://ayush-startup-frontend.vercel.app/");
+    res.redirect("https://ayush-startup-frontend.vercel.app");
   }
 );
 
