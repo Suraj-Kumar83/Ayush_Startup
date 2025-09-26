@@ -1,8 +1,7 @@
 const multer = require("multer");
 const { storage } = require("../config/gridfs");
 
-// This is the configured multer middleware
-const upload = multer({ storage }).fields([
+const upload = multer({ storage,limits: { fileSize: 10 * 1024 * 1024 }, }).fields([
   { name: "pitchDeck", maxCount: 1 },
   { name: "aadhaarCard", maxCount: 1 },
   { name: "registrationCert", maxCount: 1 },

@@ -1,16 +1,18 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+const isProd = process.env.NODE_ENV === "production";
+
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/callback",
+      callbackURL: isProd
+        ? "https://ayush-startup-registration.onrender.com/auth/google/callback"
+        : "http://localhost:3000/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
-      // You can connect this to MongoDB here.
-      // For now, just return the profile.
       return done(null, profile);
     }
   )

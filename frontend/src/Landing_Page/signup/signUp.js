@@ -5,14 +5,14 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
-import { useAuth } from "../../context/AuthContext.js"; // ✅ Import auth context
+import { useAuth } from "../../context/AuthContext.js";
 import "./SignUp.css";
-const backendURL = process.env.REACT_APP_BACKEND_URL;
+const backendURL=process.env.REACT_APP_BACKEND_URL;
 
 
 
 const Signup = () => {
-  const { setIsAuthenticated } = useAuth(); // ✅ Use the function
+  const { setIsAuthenticated } = useAuth(); 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const redirectTo = queryParams.get("redirectTo");
@@ -57,11 +57,10 @@ const Signup = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const { data } = await axios.post(
-          `${backendURL}/signup`,
-          formData,
-          { withCredentials: true }
-        );
-
+        `${backendURL}/signup`,
+        formData,
+       { withCredentials: true }
+);
         if (data.success) {
           setIsAuthenticated(true); 
           toast.success(data.message, { position: "bottom-right" });

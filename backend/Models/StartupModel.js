@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const StartupSchema = new mongoose.Schema({
   startupName: { type: String, required: true },
@@ -13,19 +13,10 @@ const StartupSchema = new mongoose.Schema({
   complianceNeeds: String,
   incorporationDate: Date,
   employees: Number,
-
-  // File references stored in GridFS (ObjectId)
-  pitchDeck: { type: mongoose.Schema.Types.ObjectId, ref: "pitchDecks.files" },
-  aadhaarCard: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "pitchDecks.files",
-  },
-  registrationCert: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "pitchDecks.files",
-  },
-
+  pitchDeck: { type: mongoose.Schema.Types.ObjectId, ref: 'pitchDecks.files' },
+  aadhaarCard: { type: mongoose.Schema.Types.ObjectId, ref: 'pitchDecks.files' },
+  registrationCert: { type: mongoose.Schema.Types.ObjectId, ref: 'pitchDecks.files' },
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Startup", StartupSchema);
+module.exports = mongoose.model('Startup', StartupSchema);

@@ -6,7 +6,6 @@ const axios = require("axios");
 const router = require("express").Router();
 const passport = require("passport");
 const sendSignupNotification = require("../util/emailNotifier.js");
-
 require("dotenv").config();
 
 
@@ -20,7 +19,7 @@ router.get("/verify-token", async (req, res) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await User.findById(decoded.id); 
+    const user = await User.findById(decoded.userId); 
     if (!user) return res.json({ success: false });
 
     res.json({
@@ -47,10 +46,14 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/", 
-    failureRedirect: "http://localhost:3000/login",
-  })
+    failureRedirect: "/login", 
+    session: false,
+  }),
+  (req, res) => {
+    res.redirect("https://ayush-startup-frontend.vercel.app");
+  }
 );
+
 
 
 router.post("/google-signup", async (req, res) => {

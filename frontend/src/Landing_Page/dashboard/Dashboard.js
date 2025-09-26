@@ -39,26 +39,17 @@ const StartupDashboard = () => {
     if (name === "aadhaarCard") setAadhaarCardFile(file);
     if (name === "registrationCert") setRegistrationCertFile(file);
   };
-  
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const fullData = new FormData();
-
-      // Append form fields
       Object.entries(formData).forEach(([key, value]) => {
         fullData.append(key, value);
       });
-
-      // Append each document separately
       if (pitchDeckFile) fullData.append("pitchDeck", pitchDeckFile);
       if (aadhaarCardFile) fullData.append("aadhaarCard", aadhaarCardFile);
       if (registrationCertFile)
@@ -74,8 +65,6 @@ const StartupDashboard = () => {
 
       if (response.data.success) {
         alert("Startup Registered Successfully!");
-
-        // Clear form
         setFormData({
           startupName: "",
           website: "",
@@ -98,12 +87,9 @@ const StartupDashboard = () => {
         if (pitchDeckRef.current) pitchDeckRef.current.value = "";
         if (aadhaarCardRef.current) aadhaarCardRef.current.value = "";
         if (registrationCertRef.current) registrationCertRef.current.value = "";
-      
-
-        // ✅ Redirect to homepage after short delay
         setTimeout(() => {
           navigate("/");
-        }, 250); // optional 1s delay for UX
+        }, 250);
       } else {
         alert("Something went wrong: " + response.data.message);
       }
