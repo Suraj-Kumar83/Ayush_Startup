@@ -189,16 +189,19 @@ const Contact = () => {
       {/* Footer */}
       <footer className="footer border-top">
         <div className="quick-links">
-          <a href="/about">About Us</a>
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
-          <a href="/contact">Contact</a>
+          <Link to="/about">About Us</Link>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/terms">Terms of Service</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div className="social-media">
-          <a href="/linkedin">LinkedIn</a>
-          <a href="/twitter">Twitter</a>
-          <a href="/facebook">Facebook</a>
-          <a href="/instagram">Instagram</a>
+          <div className="social-media">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+
         </div>
         <div className="newsletter">
           <p>
