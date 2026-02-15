@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+
 const backendURL = process.env.REACT_APP_BACKEND_URL;
 
 function Navbar() {
@@ -21,48 +22,15 @@ function Navbar() {
       });
 
       if (res.data.success) {
-        // Remove all token types
         localStorage.removeItem("authToken");
-        localStorage.removeItem("govToken")
-
-        // Update global auth state
+        localStorage.removeItem("govToken");
         setIsAuthenticated(false);
-        navigate("/"); 
+        navigate("/");
       }
     } catch (err) {
       console.error("Logout failed", err);
       toast.error("Logout failed. Try again.");
     }
-  };
-  
-  const handleSignupClick = () => {
-    alert("Signup for registering your startup.");
-    navigate("/signup");
-  };
-
-  const handleGovSignupClick = () => {
-    alert("Signup to access Government AYUSH features.");
-    navigate("/govsignup");
-  };
-
-  const handleProposalSignupClick = () => {
-    alert("Please login/signup to submit your proposal idea.");
-    navigate("/signUp?redirectTo=proposal");
-  };
-
-  const handleLoginClick = () => {
-    alert("Login to register your startup.");
-    navigate("/login");
-  };
-
-  const handleGovLoginClick = () => {
-    alert("Login to access Government AYUSH features.");
-    navigate("/govlogin");
-  };
-
-  const handleProposalLoginClick = () => {
-    alert("Login/signup required to propose your idea.");
-    navigate("/login?redirectTo=proposal");
   };
 
   if (loading) return null;
@@ -74,13 +42,16 @@ function Navbar() {
       }`}
     >
       <div className="container">
-        <a className="navbar-brand" href="#">
+        
+        {/* Logo */}
+        <Link className="navbar-brand" to="/">
           <img
             src="/logo.png"
-            alt="Logo"
+            alt="Company logo"
             style={{ width: "80px", height: "60px", borderRadius: "50%" }}
           />
-        </a>
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -92,123 +63,93 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li className="nav-item">
-              <a className="nav-link active" onClick={() => navigate("/")}>
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link active" onClick={() => navigate("/about")}>
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                onClick={() => navigate("/features")}
-              >
-                Features
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                onClick={() => navigate("/pricing")}
-              >
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                onClick={() => navigate("/contact")}
-              >
-                Contact
-              </a>
+              <Link className="nav-link active" to="/">Home</Link>
             </li>
 
             <li className="nav-item">
-              <a
-                className="nav-link active"
-                onClick={() => navigate("/virtual-yoga")}
-              >
+              <Link className="nav-link active" to="/about">About</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/features">Features</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/pricing">Pricing</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/contact">Contact</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link active" to="/virtual-yoga">
                 Virtual Yoga
-              </a>
+              </Link>
             </li>
 
             {!isAuthenticated && (
               <>
                 {/* Signup Dropdown */}
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle active"
-                    role="button"
+                  <button
+                    className="nav-link dropdown-toggle btn btn-link"
                     data-bs-toggle="dropdown"
                   >
                     SignUp
-                  </a>
+                  </button>
+
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" onClick={handleSignupClick}>
+                      <button className="dropdown-item" onClick={() => navigate("/signup")}>
                         Register Startup SignUp
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        onClick={handleGovSignupClick}
-                      >
+                      <button className="dropdown-item" onClick={() => navigate("/govsignup")}>
                         Government Features SignUp
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        onClick={handleProposalSignupClick}
-                      >
+                      <button className="dropdown-item" onClick={() => navigate("/signUp?redirectTo=proposal")}>
                         Proposal Idea SignUp
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </li>
 
                 {/* Login Dropdown */}
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle active"
-                    role="button"
+                  <button
+                    className="nav-link dropdown-toggle btn btn-link"
                     data-bs-toggle="dropdown"
                   >
                     Login
-                  </a>
+                  </button>
+
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" onClick={handleLoginClick}>
+                      <button className="dropdown-item" onClick={() => navigate("/login")}>
                         Register Startup Login
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        onClick={handleGovLoginClick}
-                      >
+                      <button className="dropdown-item" onClick={() => navigate("/govlogin")}>
                         Government Features Login
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        onClick={handleProposalLoginClick}
-                      >
+                      <button className="dropdown-item" onClick={() => navigate("/login?redirectTo=proposal")}>
                         Proposal Idea Login
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </li>
               </>
             )}
 
-            {/* Logout Button when Authenticated */}
             {isAuthenticated && (
               <li className="nav-item">
                 <button
@@ -222,7 +163,7 @@ function Navbar() {
             )}
           </ul>
 
-          {/* Dark Mode Toggle */}
+          {/* Dark Mode */}
           <button
             className={`btn btn-${darkMode ? "light" : "dark"}`}
             onClick={() => setDarkMode(!darkMode)}

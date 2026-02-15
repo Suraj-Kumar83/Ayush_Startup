@@ -14,7 +14,7 @@ function Hero() {
       <div className="row text-center">
         <img
           src="Media/startup-bg.png"
-          alt="Hero Image"
+          alt="Startup platform banner"
           className="mb-5"
           style={{
             borderRadius: "100px",
@@ -24,11 +24,14 @@ function Hero() {
             border: "solid green",
           }}
         />
+
         <h1 className="mt-5">Launch Your Startup Journey Today</h1>
+
         <p>
           Join hundreds of innovators building their future. We provide the
           tools, resources, and network to get your idea off the ground.
         </p>
+
         <button
           className="p-2 btn btn-primary fs-15 mb-5 col-lg-6 col-md-12"
           style={{ width: "15%", margin: "0 auto" }}

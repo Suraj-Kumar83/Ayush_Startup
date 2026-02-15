@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Features() {
   return (
     <div className="container mt-2">
@@ -7,21 +8,23 @@ function Features() {
         <div className="col-6">
           <img
             src="Media/features.jpg"
+            alt="Features"
             style={{
               width: "90%",
               height: "80%",
               borderRadius: "30px",
               marginLeft: "70px",
               border: "solid green",
-              borderBlockStyle: "outset ",
+              borderBlockStyle: "outset",
             }}
           />
         </div>
 
-        <div className="col-6 ">
+        <div className="col-6">
           <div className="row" style={{ marginLeft: "20px" }}>
             <h1 className="mb-3 fs-2">Everything You Need in One Place</h1>
-            <p>All the tools and support you need to grow. </p>
+            <p>All the tools and support you need to grow.</p>
+
             <div className="row" style={{ marginLeft: "20px" }}>
               <ul>
                 <li>
@@ -42,8 +45,9 @@ function Features() {
                 </li>
               </ul>
             </div>
+
             <Link to="/features" style={{ textDecoration: "none" }}>
-              Features<i class="fa-solid fa-arrow-right"></i>
+              Features <i className="fa-solid fa-arrow-right"></i>
             </Link>
           </div>
         </div>
