@@ -176,11 +176,12 @@ const Contact = () => {
         <p>Visit our office or drop by for a chat.</p>
         <div className="map-container">
           <iframe
+            title="Office Location Map"
             src="https://www.google.com/maps/embed?place=/AIIMS+Patna/@25.5629038,84.996747,12z/data=!4m6!3m5!1s0x39f2a9ea2ae04fd9:0xb2efd2a31008d750!8m2!3d25.562902!4d85.0413338!16s%2Fm%2F0k0n90r?entry=ttu&g_ep=EgoyMDI1MDYxMS4wIKXMDSoASAFQAw%3D%3D"
             width="700px"
             height="600px"
             style={{ border: "solid black", borderRadius: "15px" }}
-            allowFullScreen=""
+            allowFullScreen
             loading="lazy"
           />
         </div>
@@ -196,13 +197,13 @@ const Contact = () => {
           <Link to="/contact">Contact</Link>
         </div>
         <div className="social-media">
-          <div className="social-media">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-          </div>
 
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
         <div className="newsletter">
           <p>
